@@ -1,22 +1,4 @@
 <html>
-<head>
-	<script>
-		$(document).ready(function() {
-			$("img").click(function() {
-				alert( "Handler for .click() called." );
-				imageURL = $("img").attr("src");
-				$.ajax({
-					type: "POST",
-					url: "/searches",
-					data: {
-						user_id: <%= current_user.id %>,
-						image_url: imageURL
-					}
-				});
-			});
-		});
-	</script>
-</head>
 	<body>
 		<h1>What user do you want to lookup?</h1>
 
@@ -29,10 +11,16 @@
 
 		<% if @search %>
 			<% @twitter.search(@search).take(200).collect do |tweet| %>
-				<p><%= tweet.user.screen_name %></p>
+				<b><p><%= tweet.user.screen_name %></p></b>
 				<p><%= tweet.text %></p>
 				<% if(tweet.media.present?) %>
-					<%= link_to image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]), mentions_path( user_id: current_user.id, image_url: tweet.media[0]["media_url"]), :method => :post %>
+					
+					<% if imageExists(tweet.media[0]["media_url"]).exists? %>
+						<img id="star" src="/star.png" alt="Smiley face" height="42" width="42">
+						<%= link_to image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]), mentions_path(image_url: tweet.media[0]["media_url"]), :method => :delete %>
+					<% else %>
+						<%= link_to image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]), mentions_path( user_id: current_user.id, image_url: tweet.media[0]["media_url"]), :method => :post %>
+					<% end %>
 				<% end %>
 			<% end %>
 		<% end %>

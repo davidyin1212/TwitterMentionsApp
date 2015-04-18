@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 20150418005648) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "saved_images", ["user_id", "image_url"], name: "index_saved_images_on_user_id_and_image_url", unique: true, using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"

@@ -6,8 +6,5 @@ class CreateSavedImages < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-	
-	add_index :saved_images, [:user_id, :image_url], unique: true
-
   end
 end

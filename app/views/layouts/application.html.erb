@@ -8,6 +8,18 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <% if current_user %>
+        <p class="navbar-text navbar-right">Signed in as <%= current_user.name %></p>
+        <p><%= link_to "Sign out", sign_out_path, :method => :delete %></p>
+        <p><%= link_to "Favorites", mentions_show_path, :method => :get %></p>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
 <%= yield %>
 
 </body>

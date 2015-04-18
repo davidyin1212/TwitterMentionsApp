@@ -22,6 +22,19 @@ class MentionsController < ApplicationController
   	@saved_image = SavedImage.where(user_id: current_user.id)
   end
 
+  def destroy
+  	@image = SavedImage.where(user_id: current_user.id, image_url: params[:image_url]).first
+  	@image.destroy
+  	redirect_to mentions_index_path
+  end
+
+  def imageExists (image_url)
+  	image = SavedImage.where(user_id: current_user.id, image_url: image_url.to_s)
+  	# raise :test
+  	image
+  end
+  helper_method :imageExists
+
   private
   	def set_user
   		@twitter = current_user.twitter
