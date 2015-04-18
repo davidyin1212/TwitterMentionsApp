@@ -1,0 +1,9 @@
+<html>
+	<body>
+	    <% @saved_image.each do |saved_image| %>
+	      <tr>
+	        <td><%= image_tag(saved_image.image_url) %></td>
+	      </tr>
+	    <% end %>
+	<body>
+</html>
