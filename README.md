@@ -1,2 +1,2 @@
 #Twitter Mentions App
-checkout at twittermentionsapp.herokuapp.com
+checkout at http://twittermentionsapp.herokuapp.com
