@@ -9,7 +9,7 @@ class MentionsController < ApplicationController
 	  	else
 	  		@search = "@" + params[:search]
 	  	end
-	end
+	 end
   end
 
   def create

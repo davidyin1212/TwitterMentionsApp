@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'mysql2', '~> 0.3.20'
+
+gem 'mysql'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,9 +25,11 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Omniauth for twitter
-gem 'omniauth-twitter', '~> 1.1.0'
+gem 'omniauth-twitter'
 # Twitter gem
-gem 'twitter', '~> 5.14.0'
+gem 'twitter'
+
+gem "paperclip", "~> 4.3"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

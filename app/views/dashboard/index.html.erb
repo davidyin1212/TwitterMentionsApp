@@ -1,0 +1,7 @@
+<% @tweets.each do |tweet| %>
+	<% if tweet.media.exists? %>
+		<%= image_tag tweet.media.url(:medium) %>
+	<% end %>
+	<h1><%= tweet.post_name %></h1>
+	<p><%= tweet.body %></p>
+<% end %>

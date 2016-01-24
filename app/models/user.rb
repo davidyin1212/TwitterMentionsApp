@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	has_many :tweets
+	has_many :friends
+
 	def self.find_or_create_from_auth_hash(auth_hash)
 		# Lookup or Create user
 		user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
@@ -16,5 +19,9 @@ class User < ActiveRecord::Base
 		  config.access_token        = token
 		  config.access_token_secret = secret
 		end
+	end
+
+	def tweets_by_date(date)
+		Tweet.where({:user_id => self.id, :created_at => date})
 	end
 end
